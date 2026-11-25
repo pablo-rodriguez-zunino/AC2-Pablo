@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       labels:
+        app: web-app
         app.kubernetes.io/name: web-app
     spec:
       serviceAccountName: web-app
@@ -29,9 +30,13 @@ spec:
           # Downward API: la app muestra el pod y consulta su nodo en la API
           env:
             - name: POD_NAME
-              valueFrom: { fieldRef: { fieldPath: metadata.name } }
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: NODE_NAME
-              valueFrom: { fieldRef: { fieldPath: spec.nodeName } }
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
             # Evidencia de la entrega: el pipeline reemplaza estas variables
             - name: GITHUB_USER
               value: "${GITHUB_USER}"

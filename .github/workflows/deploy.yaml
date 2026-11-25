@@ -159,7 +159,7 @@ jobs:
         run: |
           # Solo se sustituyen estas variables; el resto del YAML queda intacto
           for f in k8s/*.yaml; do
-            envsubst "${IMAGE_URI} ${GITHUB_USER} ${GIT_SHA}" < "$f"
+            envsubst '$IMAGE_URI $GITHUB_USER $GIT_SHA' < "$f"
             echo "---"
           done | kubectl apply -f -
 
