@@ -32,7 +32,7 @@ jobs:
         working-directory: infra
 
     outputs:
-      ecr_repository_url: ${{ steps.tf-output.outputs.ecr_repository_url }}
+      ecr_repository_url: ${{ steps.tf-outputs.outputs.ecr_repository_url }}
       cluster_name: ${{ steps.tf-outputs.outputs.cluster_name }}
 
     steps:
